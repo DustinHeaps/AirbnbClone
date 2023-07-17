@@ -33,12 +33,12 @@ const UserMenu: React.FC<UserMenuProps> = ({
   }, []);
 
   const onRent = useCallback(() => {
-    // if (!currentUser) {
-    //   return loginModal.onOpen();
-    // }
+    if (!currentUser) {
+      return loginModal.onOpen();
+    }
 
     rentModal.onOpen();
-  }, [rentModal]);
+  }, [loginModal, rentModal, currentUser]);
 
   return ( 
     <div className="relative">

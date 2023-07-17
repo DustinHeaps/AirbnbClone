@@ -1,5 +1,3 @@
-export const dynamic = 'force-dynamic'
-
 import { NextResponse } from "next/server";
 
 import prisma from "@/app/libs/prismadb";
@@ -10,9 +8,9 @@ export async function POST(
 ) {
   const currentUser = await getCurrentUser();
 
-  // if (!currentUser) {
-  //   return NextResponse.error();
-  // }
+  if (!currentUser) {
+    return NextResponse.error();
+  }
 
   const body = await request.json();
   const { 
@@ -44,7 +42,7 @@ export async function POST(
       guestCount,
       locationValue: location.value,
       price: parseInt(price, 10),
-      userId: '12'
+      userId: currentUser.id
     }
   });
 
