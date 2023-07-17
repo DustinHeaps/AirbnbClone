@@ -10,9 +10,9 @@ export async function POST(
 ) {
   const currentUser = await getCurrentUser();
 
-  if (!currentUser) {
-    return NextResponse.error();
-  }
+  // if (!currentUser) {
+  //   return NextResponse.error();
+  // }
 
   const body = await request.json();
   const { 
@@ -44,7 +44,7 @@ export async function POST(
       guestCount,
       locationValue: location.value,
       price: parseInt(price, 10),
-      userId: currentUser.id
+      userId: '12'
     }
   });
 
